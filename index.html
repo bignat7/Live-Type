@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Specimen</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: url(images/airplane-cursor.png), auto;
+    }
+
+    body {
+        background: url(images/abstract-wireframe-grid-line-texture-dark-background_1017-55992.jpg.avif);
+    }
+
+    @font-face {
+        font-family: "Aeroflow";
+        src: url("AeroVF.ttf");
+    }
+
+    h1 {
+        font-family: "Aeroflow", sans-serif;
+        font-variation-settings: "AERO" 0;
+        font-size: 29vw;
+        background-clip: text;
+        color: transparent;
+        transition: background-position 0.1s;
+        text-align: right;
+        line-height: 0.95;
+        margin-right: 10px;
+		}
+
+		@keyframes title-animation {
+			0% {
+				font-variation-settings: "AERO" 0;
+			}
+            25% {
+				font-variation-settings: "AERO" 500;
+			}
+			50% {
+				font-variation-settings: "AERO" 1000;
+			}
+            75% {
+				font-variation-settings: "AERO" 500;
+			}
+            100% {
+				font-variation-settings: "AERO" 0;
+			}
+		}
+    
+
+    h2 {
+        font-family: "Aeroflow", sans-serif;
+        font-variation-settings: "AERO" 0;
+        text-transform: uppercase;
+        font-size: 4.5vw;
+        background: linear-gradient(to right, red, yellow, green, blue);
+        /* Used ChatGPT to troubleshoot since it wasn't working */
+        -webkit-background-clip: text;
+        /* Chrome/Safari */
+        background-clip: text;
+        /* Non-prefixed version, currently supported by Firefox */
+        color: transparent;
+        /* Make text transparent to show the gradient */
+        text-align: center;
+    }
+
+    h3 {
+        font-family: "Aeroflow", sans-serif;
+        text-align: center;
+        font-size: 9vw;
+        color: #1f1f20;
+        font-weight: normal;
+    }
+
+    h6 {
+        font-family: "Aeroflow", sans-serif;
+        text-transform: uppercase;
+        text-align: right;
+        font-size: 60px;
+        color: white;
+        font-weight: normal;
+    }
+
+    p {
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        margin: 20px 50px 0px 50px;
+    }
+
+    .caption {
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 15px;
+        color: #1f1f20;
+        font-weight: bold;
+    }
+
+    .titlegrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 0px;
+    }
+
+    .modulargrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0px;
+        max-width: 100%;
+        gap: 20px;
+    }
+
+    .modulargrid div {
+        display: flex;
+        flex-direction: column;
+        /* Ensures text and images stack vertically */
+        align-items: center;
+        /* Centers items horizontally */
+        justify-content: center;
+        /* Centers items vertically */
+        text-align: center;
+    }
+
+    .modulargrid img {
+        width: 80%;
+        /* or a specific pixel value, e.g., 200px */
+        height: auto;
+        /* Keeps the aspect ratio */
+    }
+
+    .grid-container {
+        margin: 20px 0px 0px 20px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 50px);
+        grid-template-rows: repeat(4, 50px);
+        gap: 150px;
+        overflow: hidden;
+    }
+
+    .arrow {
+        width: 150px;
+        height: 150px;
+        background-image: url('images/streamline3.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.1s;
+    }
+
+    @media (max-width: 800px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+            /* Change to 1 column */
+        }
+
+        .arrow {
+            width: 90px;
+            /* Smaller arrows for smaller screens */
+            height: 90px;
+        }
+    }
+
+    .typeslogans {
+        margin: 0px;
+        background-color: #e0e0df;
+        color:#1f1f20;
+        text-align: center;
+    }
+
+    .typeslogans h1 {
+    font-family: "Aeroflow", sans-serif;
+    font-size: 35vw; /* Adjust size as needed */
+    color: #1f1f20; /* Set a visible color */
+    text-align: center;
+    margin: 0; /* Ensure no extra margin */
+    background: none; /* Remove any background style */
+    background-clip: none; /* Remove background clipping */
+    -webkit-background-clip: none;
+    animation-name: title-animation;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+}
+
+    .bigarrows {
+        height: 100vh;
+        display: flex;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding-left: 20px;
+        max-width: 100%;
+        gap: 20px;
+    }
+</style>
+
+<body>
+    <div class="titlegrid">
+        <div class="grid-container" id="grid">
+            <!-- Arrows will be created here by JavaScript -->
+        </div>
+
+        <div>
+            <br>
+            <h1 id="title">AERO</h1>
+            <br>
+            <h6 style="margin: 60px 35px 0px 60px;">is an all-caps pictogram font that captures the thrill of velocity
+                and flight.</h6>
+            <br><br><br><br><br>
+        </div>
+    </div>
+
+    <div class="typeslogans">
+        <br>
+        <div>
+            <h3>PUSH ALTITUDE LIMITS</h3>
+            <p class="caption">AERO: 0 ---- ARRW: 0</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+            <h3>BREAK SOUND BARRIERS</h3>
+            <p class="caption">AERO: 100 ---- ARRW: 0</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+            <h3>THE FUTURE IS FAST</h3>
+            <p class="caption">AERO: 0 ---- ARRW: 100</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div>
+            <h3 style="font-size: 7.5vw;">SOAR ABOVE THE ORDINARY</h3>
+            <p class="caption">AERO: 100 ---- ARRW: 100</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Made for skyward dreamers whimsical wayfarers, and creative jetsetters.</h2>
+    <br>
+    <br>
+    <br>
+    <p>Inspired by aircraft aerodynamics, <span style="font-family: 'Aeroflow'; font-size: 50px;">AERO</span> is
+        carefully crafted in reference to aircraft modules.</p>
+    <br>
+    <br>
+    <br>
+    <div class="modulargrid">
+
+        <div>
+            <p>BODY</p>
+            <br>
+            <img src="images/Body-Plane.png">
+            <br>
+            <br>
+            <img src="images/modules-04.png">
+        </div>
+
+        <div>
+            <p>TAIL</p>
+            <br>
+            <img src="images/Tail-Plane.png">
+            <br>
+            <br>
+            <img src="images/modules-03.png">
+        </div>
+
+        <div>
+            <p>ENGINE</p>
+            <br>
+            <img src="images/Fan-Plane.png">
+            <br>
+            <br>
+            <img src="images/modules-05.png">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="typeslogans">
+        <h1>LIFT <br> DRAG</h1>
+    </div>
+<br><br>
+    <p>It includes letters with laminar flow as well as turbulent flow.</p>
+
+    <div class="modulargrid">
+
+        <div>
+            <img src="images/arrow-modules-10.png">
+        </div>
+
+        <div>
+            <img src="images/arrows-modules-08.png">
+        </div>
+
+        <div>
+            <img src="images/arrows-modules-09.png">
+        </div>
+    </div>
+    <br><br>
+    <p>Stay tuned for more.</p>
+    <br>
+    <br>
+    <div class="bigarrows" id="bigarrows">
+        <img src="images/bigarrows.png">
+        <img src="images/bigarrows.png">
+        <img src="images/bigarrows.png">
+        <img src="images/bigarrows.png">
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const title = document.getElementById('title');
+        const gradientDiv = document.getElementById('bigarrows');
+
+        // Create a large number of arrows in the grid
+        for (let i = 0; i < 8; i++) {
+            const arrow = document.createElement('div');
+            arrow.classList.add('arrow');
+            grid.appendChild(arrow);
+        }
+
+        // Update arrow directions based on mouse position
+        document.addEventListener('mousemove', (event) => {
+            const arrows = grid.querySelectorAll('.arrow');
+            arrows.forEach((arrow) => {
+                const rect = arrow.getBoundingClientRect();
+                const arrowX = rect.left + rect.width / 2;
+                const arrowY = rect.top + rect.height / 2;
+
+                const angle = Math.atan2(event.clientY - arrowY, event.clientX - arrowX) * (180 / Math.PI);
+                arrow.style.transform = `rotate(${angle}deg)`;
+            });
+
+            // Update title radial gradient based on mouse position
+            const titleRect = title.getBoundingClientRect();
+            const offsetX = event.clientX - titleRect.left;
+            const offsetY = event.clientY - titleRect.top;
+
+            title.style.backgroundImage = `radial-gradient(circle at ${offsetX}px ${offsetY}px, red 5%, yellow 25%, green 50%, blue 75%)`;
+        });
+
+        // Function to update the background gradient of the div based on mouse position
+        document.addEventListener('mousemove', (event) => {
+            const rect = gradientDiv.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            gradientDiv.style.background = `radial-gradient(circle at ${x}px ${y}px, red 3%, yellow 25%, green 50%, blue 75%)`;
+        });
+    </script>
+</body>
+
+</html>
