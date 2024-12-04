@@ -30,6 +30,7 @@
         font-size: max(50px, 25vw);
         background-clip: text;
         color: transparent;
+        font-weight: normal;
         transition: background-position 0.1s;
         text-align: right;
         line-height: 0.95;
@@ -73,6 +74,7 @@
         color: transparent;
         /* Make text transparent to show the gradient */
         text-align: center;
+        font-weight: normal;
     }
 
     h3 {
@@ -82,6 +84,7 @@
         color: #1f1f20;
         font-weight: normal;
         text-transform: uppercase;
+        font-weight: normal;
     }
 
     h6 {
@@ -302,18 +305,40 @@
         font-weight: bold;
     }
 
-    input {
-  width: 100%;
-  height: 25px;
-  background: #1f1f20;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 20px;
+      background: #1f1f20;
+      border-radius: 5px;
+      outline: none;
     }
 
-    input:hover {
-        opacity: 1;
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #0078D7;
+      border-radius: 5px;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #0078D7;
+      border-radius: 5px;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #1f1f20;
+      height: 20px;
+      border-radius: 5px;
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb {
+      background-color: #e0e0df;
     }
 
 </style>
@@ -330,7 +355,8 @@
             <br>
             <br>
             <br>
-            <h6 style="margin: 35px;">is an all-caps pictogram font that captures the thrill of velocity and flight.</h6>
+            <h6 style="margin: 35px;">is an all-caps pictogram font that captures the thrill of velocity and flight.
+            </h6>
             <br><br><br><br><br><br>
         </div>
     </div>
@@ -414,7 +440,8 @@
         <br>
         <br>
         <br>
-        <h3 style="font-size: min(120px, 10vw); animation: title-animation 2s linear infinite;">ABCDEFGHIJKLMN<br>OPQRSTUVWXYZ<br>0123456789-!?.,:;
+        <h3 style="font-size: min(120px, 10vw); animation: title-animation 2s linear infinite;">
+            ABCDEFGHIJKLMN<br>OPQRSTUVWXYZ<br>0123456789-!?.,:;
         </h3>
         <br>
         <br>
@@ -443,7 +470,7 @@
             <img src="images/arrows-modules-09.png">
         </div>
     </div>
-<br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <div class="modulargrid" style="margin-left: 80px; gap: 40px; grid-template-columns: 1fr 1fr; opacity: 0.8;">
         <img src="images/stall-jpg_1397586914.jpg">
         <img src="images/Aerodynamics 2-8.png">
@@ -480,10 +507,10 @@
 
             <div>
                 <h3 style="text-align: left; animation: title-animation 2s linear infinite;">TYPE TESTER</h3>
-<br><br>
+                <br><br>
                 <label for="aero">Velocity: <span id="current-aero">0</span></label><br><br>
                 <input name="aero" type="range" min="-500" max="500" value="0" oninput="setAero(this.value)">
-<br><br><br><br>
+                <br><br><br><br>
                 <label for="font-size">Wind Resistance: <span id="current-font-size">100</span>px</label><br><br>
                 <input name="font-size" type="range" min="1" max="200" value="100" oninput="setFontSize(this.value)">
             </div>
@@ -500,107 +527,108 @@
         agile as you.
         <br>
         <br>
-        ------->>> Natalie Ho, Type + Code Fall 2024 <<<------- </p>
-            <br>
+        -------&gt;&gt;&gt; Natalie Ho, Type + Code Fall 2024 &lt;&lt;&lt;-------
+    </p>
+    <br>
 
 
-            <script>
-                const grid = document.getElementById('grid');
-                const title = document.getElementById('title');
-                const gradientDiv = document.getElementById('bigarrows');
+    <script>
+        const grid = document.getElementById('grid');
+        const title = document.getElementById('title');
+        const gradientDiv = document.getElementById('bigarrows');
 
-                // Create a large number of arrows in the grid
-                for (let i = 0; i < 8; i++) {
-                    const arrow = document.createElement('div');
-                    arrow.classList.add('arrow');
-                    grid.appendChild(arrow);
-                }
+        // Create a large number of arrows in the grid
+        for (let i = 0; i < 8; i++) {
+            const arrow = document.createElement('div');
+            arrow.classList.add('arrow');
+            grid.appendChild(arrow);
+        }
 
-                // Update arrow directions based on mouse position
-                document.addEventListener('mousemove', (event) => {
-                    const arrows = grid.querySelectorAll('.arrow');
-                    arrows.forEach((arrow) => {
-                        const rect = arrow.getBoundingClientRect();
-                        const arrowX = rect.left + rect.width / 2;
-                        const arrowY = rect.top + rect.height / 2;
+        // Update arrow directions based on mouse position
+        document.addEventListener('mousemove', (event) => {
+            const arrows = grid.querySelectorAll('.arrow');
+            arrows.forEach((arrow) => {
+                const rect = arrow.getBoundingClientRect();
+                const arrowX = rect.left + rect.width / 2;
+                const arrowY = rect.top + rect.height / 2;
 
-                        const angle = Math.atan2(event.clientY - arrowY, event.clientX - arrowX) * (180 / Math.PI);
-                        arrow.style.transform = `rotate(${angle}deg)`;
-                    });
+                const angle = Math.atan2(event.clientY - arrowY, event.clientX - arrowX) * (180 / Math.PI);
+                arrow.style.transform = `rotate(${angle}deg)`;
+            });
 
-                    // Update title radial gradient based on mouse position
-                    const titleRect = title.getBoundingClientRect();
-                    const offsetX = event.clientX - titleRect.left;
-                    const offsetY = event.clientY - titleRect.top;
+            // Update title radial gradient based on mouse position
+            const titleRect = title.getBoundingClientRect();
+            const offsetX = event.clientX - titleRect.left;
+            const offsetY = event.clientY - titleRect.top;
 
-                    title.style.backgroundImage = `radial-gradient(circle at ${offsetX}px ${offsetY}px, red 5%, yellow 25%, green 50%, blue 75%)`;
-                });
+            title.style.backgroundImage = `radial-gradient(circle at ${offsetX}px ${offsetY}px, red 5%, yellow 25%, green 50%, blue 75%)`;
+        });
 
-                // Function to update the background gradient of the div based on mouse position
-                document.addEventListener('mousemove', (event) => {
-                    const rect = gradientDiv.getBoundingClientRect();
-                    const x = event.clientX - rect.left;
-                    const y = event.clientY - rect.top;
+        // Function to update the background gradient of the div based on mouse position
+        document.addEventListener('mousemove', (event) => {
+            const rect = gradientDiv.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
 
-                    gradientDiv.style.background = `radial-gradient(circle at ${x}px ${y}px, red 3%, yellow 25%, green 50%, blue 75%)`;
-                });
+            gradientDiv.style.background = `radial-gradient(circle at ${x}px ${y}px, red 3%, yellow 25%, green 50%, blue 75%)`;
+        });
 
 
-                var root = document.querySelector('html');
-                var body = document.querySelector('body');
-                var container = document.querySelector('.container');
+        var root = document.querySelector('html');
+        var body = document.querySelector('body');
+        var container = document.querySelector('.container');
 
-                function setAxes(event) {
-                    // Top of container
-                    // This is needed if not the first div on the page
-                    var scrollTop = container.offsetTop;
+        function setAxes(event) {
+            // Top of container
+            // This is needed if not the first div on the page
+            var scrollTop = container.offsetTop;
 
-                    // Full container height
-                    var scrollHeight = container.offsetHeight;
+            // Full container height
+            var scrollHeight = container.offsetHeight;
 
-                    // Full number of pixels scrolled down the page
-                    var scrollPosition = window.scrollY;
+            // Full number of pixels scrolled down the page
+            var scrollPosition = window.scrollY;
 
-                    // Calculate the number of pixels scrolled so far
-                    var pixelsScrolled = scrollPosition - scrollTop;
+            // Calculate the number of pixels scrolled so far
+            var pixelsScrolled = scrollPosition - scrollTop;
 
-                    // Calculate the percent scrolled (0–1)
-                    // We’re adjusting the height slightly to make the max value visible
-                    var percentScrolledWRONG = pixelsScrolled / scrollHeight;
-                    var percentScrolled = pixelsScrolled / (scrollHeight - window.innerHeight);
-                    console.log("Unfixed scrolled percents:", percentScrolledWRONG, percentScrolled);
+            // Calculate the percent scrolled (0–1)
+            // We’re adjusting the height slightly to make the max value visible
+            var percentScrolledWRONG = pixelsScrolled / scrollHeight;
+            var percentScrolled = pixelsScrolled / (scrollHeight - window.innerHeight);
+            console.log("Unfixed scrolled percents:", percentScrolledWRONG, percentScrolled);
 
-                    // Prevent a negative value
-                    if (percentScrolled < 0) {
-                        percentScrolled = 0;
-                    }
-                    console.log("Fixed scrolled percent:", percentScrolled);
+            // Prevent a negative value
+            if (percentScrolled < 0) {
+                percentScrolled = 0;
+            }
+            console.log("Fixed scrolled percent:", percentScrolled);
 
-                    // Convert percentage to variable axis range
-                    // For this font, that range is 0 to 100
-                    var aero = Math.round((percentScrolled * 1000) - 500);
+            // Convert percentage to variable axis range
+            // For this font, that range is 0 to 100
+            var aero = Math.round((percentScrolled * 1000) - 500);
 
-                    // Set CSS variable
-                    root.style.setProperty('--aero', aero);
-                }
+            // Set CSS variable
+            root.style.setProperty('--aero', aero);
+        }
 
-                // Change the charge CSS variable
-		var currentAero = document.querySelector('#current-aero');
-		function setAero(newAero) {
-			console.log(newAero);
-			currentAero.innerText = newAero;
-			root.style.setProperty('--aero', newAero);
-		}
+        // Change the charge CSS variable
+        var currentAero = document.querySelector('#current-aero');
+        function setAero(newAero) {
+            console.log(newAero);
+            currentAero.innerText = newAero;
+            root.style.setProperty('--aero', newAero);
+        }
 
-		// Change the font-size CSS variable
-		var currentFontSize = document.querySelector('#current-font-size');
-		function setFontSize(newFontSize) {
-			console.log(newFontSize);
-			currentFontSize.innerText = newFontSize;
-			root.style.setProperty('--font-size', newFontSize + "px"); // we need to add the units onto here
-		}
+        // Change the font-size CSS variable
+        var currentFontSize = document.querySelector('#current-font-size');
+        function setFontSize(newFontSize) {
+            console.log(newFontSize);
+            currentFontSize.innerText = newFontSize;
+            root.style.setProperty('--font-size', newFontSize + "px"); // we need to add the units onto here
+        }
 
-            </script>
+    </script>
 </body>
 
 </html>
